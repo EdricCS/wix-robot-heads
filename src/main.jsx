@@ -46,7 +46,7 @@ function RobotEmbed() {
         color="#e6e6ea"
         trimColor="#c27a52"
         screenColor="#ffc46b"
-        speed={0.5}
+        speed={1.5}
         antenna={false}
         interactive={true}
       />
