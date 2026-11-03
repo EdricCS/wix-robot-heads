@@ -1,1 +1,24 @@
 
+{
+  "name": "wix-robot-heads-embed",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "robot-heads": "latest"
+  },
+  "devDependencies": {
+    "vite": "^7.1.7"
+  }
+}
+
