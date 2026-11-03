@@ -6,7 +6,7 @@ import "./style.css";
 
 function RobotEmbed() {
   const stageRef = useRef(null);
-  const [robotSize, setRobotSize] = useState(220);
+  const [robotSize, setRobotSize] = useState(200);
 
   useEffect(() => {
     const stage = stageRef.current;
