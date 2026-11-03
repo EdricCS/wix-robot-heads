@@ -43,11 +43,12 @@ function RobotEmbed() {
         shape="rectangle"
         state="idle"
         size={robotSize}
+        color="#e6e6ea"
+        trimColor="#c27a52"
+        screenColor="#ffc46b"
+        speed={0.5}
+        antenna={false}
         interactive={true}
-        antenna={true}
-        floorShadow={true}
-        speed={1}
-        aria-label="Interactive animated robot head"
       />
     </main>
   );
