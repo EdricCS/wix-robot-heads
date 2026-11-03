@@ -17,9 +17,9 @@ function RobotEmbed() {
       const height = stage.clientHeight || window.innerHeight;
 
       const nextSize = Math.max(
-        120,
-        Math.min(280, Math.min(width, height) - 32)
-      );
+  80,
+  Math.min(280, Math.min(width, height) - 32)
+);
 
       setRobotSize(Math.round(nextSize));
     };
