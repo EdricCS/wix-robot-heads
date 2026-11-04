@@ -5,6 +5,7 @@ import "./style.css";
 
 function RobotEmbed() {
   const stageRef = useRef(null);
+  const trackingActiveRef = useRef(false);
   const [robotSize, setRobotSize] = useState(150);
 
   useEffect(() => {
@@ -45,8 +46,9 @@ function RobotEmbed() {
       if (!message || typeof message !== "object") return;
 
       if (message.type === "WIX_ROBOT_ACTIVE") {
-        // Wix page code enables tracking only while the pointer is in section27.
-        if (message.active === false) {
+        // Track only while Wix reports that the pointer is inside section27.
+        trackingActiveRef.current = message.active === true;
+        if (!trackingActiveRef.current) {
           document.dispatchEvent(new PointerEvent("pointerleave"));
         }
         return;
@@ -54,6 +56,7 @@ function RobotEmbed() {
 
       if (
         message.type === "WIX_ROBOT_CURSOR" &&
+        trackingActiveRef.current &&
         Number.isFinite(message.x) &&
         Number.isFinite(message.y)
       ) {
