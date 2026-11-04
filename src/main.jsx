@@ -79,6 +79,21 @@ function RobotEmbed() {
 
     window.addEventListener("message", handleParentMessage);
 
+    // Let Wix page code know this iframe is ready to receive messages.
+    let parentOrigin = "*";
+    try {
+      if (document.referrer) {
+        parentOrigin = new URL(document.referrer).origin;
+      }
+    } catch {
+      // Keep the fallback origin if the referrer is unavailable.
+    }
+
+    window.parent.postMessage(
+      { source: "wix-robot-embed", type: "ROBOT_READY" },
+      parentOrigin
+    );
+
     return () => {
       window.removeEventListener("message", handleParentMessage);
     };
