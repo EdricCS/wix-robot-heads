@@ -44,6 +44,14 @@ function RobotEmbed() {
       const message = event.data;
       if (!message || typeof message !== "object") return;
 
+      if (message.type === "WIX_ROBOT_ACTIVE") {
+        // Wix page code enables tracking only while the pointer is in section27.
+        if (message.active === false) {
+          document.dispatchEvent(new PointerEvent("pointerleave"));
+        }
+        return;
+      }
+
       if (
         message.type === "WIX_ROBOT_CURSOR" &&
         Number.isFinite(message.x) &&
