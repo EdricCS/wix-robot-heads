@@ -9,7 +9,7 @@ function RobotEmbed() {
   // ROBOT SETTINGS
   const robotSize = 110;
   const robotX = "12vw";
-  const robotY = "0vh";
+  const robotY = "-10vh";
 
   useEffect(() => {
     const handleParentMessage = (event) => {
