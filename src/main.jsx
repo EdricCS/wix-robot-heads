@@ -45,6 +45,25 @@ function RobotEmbed() {
       const message = event.data;
       if (!message || typeof message !== "object") return;
 
+      if (message.type === "WIX_ROBOT_PING") {
+        // Wix may attach its onMessage handler after this iframe first loads.
+        // Reply to a fresh ping so the parent can reliably complete the handshake.
+        let parentOrigin = "*";
+        try {
+          if (document.referrer) {
+            parentOrigin = new URL(document.referrer).origin;
+          }
+        } catch {
+          // Keep the fallback origin if the referrer is unavailable.
+        }
+
+        window.parent.postMessage(
+          { source: "wix-robot-embed", type: "ROBOT_READY" },
+          parentOrigin
+        );
+        return;
+      }
+
       if (message.type === "WIX_ROBOT_ACTIVE") {
         // Track only while Wix reports that the pointer is inside section27.
         trackingActiveRef.current = message.active === true;
