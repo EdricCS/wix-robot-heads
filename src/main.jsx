@@ -8,7 +8,7 @@ function RobotEmbed() {
 
   // ROBOT SETTINGS
   const robotSize = 110;
-  const robotX = "0vw";
+  const robotX = "-30vw";
   const robotY = "0vh";
 
   useEffect(() => {
